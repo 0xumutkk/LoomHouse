@@ -1,0 +1,271 @@
+/* ======================================
+   LOOM HOUSE — GLOBAL STYLES (STAGE 1)
+   ====================================== */
+
+/* ===== CSS RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* ===== COLOR PALETTE ===== */
+:root {
+  --color-bg: #F7F4EF;
+  --color-warm-grey: #E6E2DC;
+  --color-soft-cocoa: #A38A74;
+  --color-burnt-sienna: #D18A63;
+  --color-black-lines: #1A1A1A;
+  
+  /* Spacing presets (140-200px vertical spacing) */
+  --spacing-xs: 40px;
+  --spacing-sm: 80px;
+  --spacing-md: 140px;
+  --spacing-lg: 180px;
+  --spacing-xl: 200px;
+  
+  /* Grid */
+  --grid-columns: 12;
+  --grid-gap: 24px;
+  --container-max: 1440px;
+}
+
+/* ===== TYPOGRAPHY ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--color-black-lines);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings — Elegant Serif */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+p {
+  margin-bottom: 16px;
+  max-width: 65ch;
+}
+
+/* ===== LAYOUT SYSTEM ===== */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap);
+}
+
+/* Column spans */
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-5 { grid-column: span 5; }
+.col-6 { grid-column: span 6; }
+.col-7 { grid-column: span 7; }
+.col-8 { grid-column: span 8; }
+.col-9 { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* Responsive grid */
+@media (max-width: 768px) {
+  .grid-12 {
+    grid-template-columns: 1fr;
+  }
+  
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    grid-column: span 1;
+  }
+}
+
+/* ===== SPACING UTILITIES ===== */
+.section {
+  padding: var(--spacing-lg) 0;
+}
+
+.section-sm {
+  padding: var(--spacing-sm) 0;
+}
+
+.section-md {
+  padding: var(--spacing-md) 0;
+}
+
+.section-lg {
+  padding: var(--spacing-lg) 0;
+}
+
+.section-xl {
+  padding: var(--spacing-xl) 0;
+}
+
+.spacer-xs { margin-top: var(--spacing-xs); }
+.spacer-sm { margin-top: var(--spacing-sm); }
+.spacer-md { margin-top: var(--spacing-md); }
+.spacer-lg { margin-top: var(--spacing-lg); }
+.spacer-xl { margin-top: var(--spacing-xl); }
+
+/* ===== LINE-ART PLACEHOLDERS ===== */
+.lineArtPlaceholder {
+  background-color: var(--color-warm-grey);
+  border: 2px dashed var(--color-soft-cocoa);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-soft-cocoa);
+  font-size: 14px;
+  font-style: italic;
+  min-height: 300px;
+}
+
+/* Line-art utility classes (for future use) */
+.stroke-2px {
+  stroke-width: 2px;
+}
+
+.stroke-black {
+  stroke: var(--color-black-lines);
+}
+
+.organic-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ===== WEAVE LINE UTILITIES ===== */
+.weave-line svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.weave-line path {
+  stroke: var(--color-black-lines);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* ===== BUTTON STYLES ===== */
+.btn {
+  display: inline-block;
+  padding: 16px 40px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  background-color: var(--color-burnt-sienna);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  background-color: #c17a56;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-black-lines);
+  border: 1px solid var(--color-black-lines);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-black-lines);
+  color: var(--color-bg);
+}
+
+/* ===== TEXT UTILITIES ===== */
+.text-center {
+  text-align: center;
+}
+
+.text-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.text-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+.text-warm-grey {
+  color: var(--color-warm-grey);
+}
+
+.text-cocoa {
+  color: var(--color-soft-cocoa);
+}
+
+.text-sienna {
+  color: var(--color-burnt-sienna);
+}
+
+/* ===== LINKS ===== */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-burnt-sienna);
+}
+
+/* STAGE 5 COMPLETE — READY FOR STAGE 6 */
+

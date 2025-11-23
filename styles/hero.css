@@ -1,0 +1,49 @@
+/* ======================================
+   LOOM HOUSE — HERO COMPONENT STYLES
+   STAGE 2
+   ====================================== */
+
+/* 
+  This CSS file serves as documentation and reference
+  for the Hero component styling.
+  
+  The actual styles are implemented using styled-jsx
+  within the Hero.tsx component for better component
+  encapsulation and Next.js optimization.
+  
+  Key Design Specifications:
+  
+  1. Layout
+     - Full viewport height (100vh)
+     - Centered content alignment
+     - Generous whitespace (80-100px margins)
+  
+  2. Face Line-Art Placeholder
+     - Dimensions: 460px × 460px
+     - Border: 2px solid #1A1A1A
+     - Organic shape using clip-path polygon
+     - Positioned above heading with 80px margin
+  
+  3. Typography
+     - Heading: Cormorant Garamond, 84px (clamp 56-84px)
+     - Subheading: Inter, 20px (clamp 17-20px), light weight
+     - Letter-spacing: -0.02em (heading), 0.015em (subheading)
+  
+  4. CTAs
+     - Primary button: #D18A63 background, white text
+     - Secondary link: Underline animation on hover
+     - Gap: 40px between elements
+  
+  5. Weaving Line Placeholder
+     - Width: 60% of container
+     - Height: 80px
+     - Organic wave curve using SVG path
+     - Positioned 100px below content
+  
+  6. Responsive Breakpoints
+     - Tablet: 768px
+     - Mobile: 480px
+*/
+
+/* STAGE 2 COMPLETE — READY FOR STAGE 3 */
+

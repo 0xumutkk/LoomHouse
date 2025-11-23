@@ -1,0 +1,63 @@
+/* ======================================
+   LOOM HOUSE — WEAVE LINE COMPONENT
+   STAGE 3
+   ====================================== */
+
+/*
+  This CSS file serves as documentation and reference
+  for the WeaveLine component styling.
+  
+  The actual styles are implemented using styled-jsx
+  within the WeaveLine.tsx component for better component
+  encapsulation and Next.js optimization.
+  
+  Key Design Specifications:
+  
+  1. SVG Structure
+     - ViewBox: 0 0 1200 140
+     - Preserves aspect ratio: none (for full-width stretch)
+     - Height: 140px (desktop), 120px (mobile)
+  
+  2. Organic Path
+     - Complex Bezier curve with multiple control points
+     - Asymmetric and irregular for hand-drawn feel
+     - No harsh symmetry
+     - Warm, gallery-like aesthetic
+  
+  3. Stroke Styling
+     - Color: #1A1A1A (black lines)
+     - Width: 2px
+     - Caps: round
+     - Joins: round
+     - Vector-effect: non-scaling-stroke (maintains stroke width)
+  
+  4. Scroll-Linked Motion
+     - Parallax-like effect using scroll position
+     - Movement range: -8px to +8px (vertical)
+     - Multiplier: scrollY * 0.04
+     - Transition: 0.1s ease-out
+     - Uses requestAnimationFrame for performance
+     - Passive event listener
+  
+  5. Layout
+     - Width: 100% with max-width 1200px
+     - Centered horizontally
+     - Margin-top: 100px (desktop), 80px (mobile)
+     - Padding: 40px (desktop), 24px (mobile)
+  
+  6. Performance Optimizations
+     - will-change: transform
+     - Throttling via requestAnimationFrame
+     - Passive scroll listener
+     - Minimal repaints
+  
+  Design Philosophy:
+  - Extremely subtle and non-intrusive
+  - "Breathing" effect that enhances without distracting
+  - Maintains warm gallery aesthetic
+  - Lightweight with no external dependencies
+  - Production-ready and performant
+*/
+
+/* STAGE 3 COMPLETE — READY FOR STAGE 4 */
+
