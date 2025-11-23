@@ -1,6 +1,8 @@
-import Hero from '@/components/Hero';
-import WeaveLine from '@/components/WeaveLine';
-import ScrollDrawFigure from '@/components/ScrollDrawFigure';
+import React from 'react';
+import Hero from '../components/Hero';
+import WeaveLine from '../components/WeaveLine';
+import LineArtBlock from '../components/LineArtBlock';
+import { IconCurate, IconConnect, IconCreate } from '../components/MissionIcons';
 
 export default function Home() {
   return (
@@ -21,32 +23,27 @@ export default function Home() {
             </p>
           </div>
           
-          {/* NEW: Scroll Draw Figure Centered */}
-          <div style={{ margin: '60px auto 120px auto', display: 'flex', justifyContent: 'center' }}>
-             <ScrollDrawFigure />
-          </div>
-          
           <div className="grid-12" style={{ gap: '48px' }}>
             <div className="col-4">
-              <div className="lineArtPlaceholder" style={{ minHeight: '200px' }}>
-                Icon 1
-              </div>
+              <LineArtBlock height={200}>
+                <IconCurate />
+              </LineArtBlock>
               <h4 style={{ marginTop: '24px' }}>Curate</h4>
               <p>Showcasing exceptional art from our community</p>
             </div>
             
             <div className="col-4">
-              <div className="lineArtPlaceholder" style={{ minHeight: '200px' }}>
-                Icon 2
-              </div>
+              <LineArtBlock height={200}>
+                <IconConnect />
+              </LineArtBlock>
               <h4 style={{ marginTop: '24px' }}>Connect</h4>
               <p>Fostering meaningful relationships between artists</p>
             </div>
             
             <div className="col-4">
-              <div className="lineArtPlaceholder" style={{ minHeight: '200px' }}>
-                Icon 3
-              </div>
+              <LineArtBlock height={200}>
+                <IconCreate />
+              </LineArtBlock>
               <h4 style={{ marginTop: '24px' }}>Create</h4>
               <p>Empowering artists to build on Web3</p>
             </div>
@@ -71,9 +68,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }
 
-// STAGE 6 COMPLETE — READY FOR STAGE 7
+// STAGE 8A + 8B COMPLETE — READY FOR STAGE 9
 

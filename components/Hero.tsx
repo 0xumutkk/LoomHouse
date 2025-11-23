@@ -1,14 +1,19 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
 import FaceLineArt from './FaceLineArt';
+import PartnerIcons from './PartnerIcons';
 
 export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-container">
-        {/* Androjen Face Line-Art */}
-        <FaceLineArt />
+        {/* Hero Visual Wrapper - Face + Partner Icons */}
+        <div className="hero-visual-wrapper">
+          <FaceLineArt />
+          <PartnerIcons />
+        </div>
         
         {/* Hero Content */}
         <div className="hero-content">
@@ -51,6 +56,17 @@ export default function Hero() {
           text-align: center;
         }
         
+        /* ===== HERO VISUAL ===== */
+        .hero-visual-wrapper {
+          position: relative;
+          width: 100%;
+          max-width: 640px;
+          margin: 0 auto 20px auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
         /* ===== HERO CONTENT ===== */
         .hero-content {
           max-width: 800px;

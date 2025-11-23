@@ -9,7 +9,11 @@
   box-sizing: border-box;
 }
 
-html,
+html {
+  font-size: clamp(15px, 1.2vw + 0.8rem, 18px);
+  height: 100%;
+}
+
 body {
   height: 100%;
   overflow-x: hidden;
@@ -22,14 +26,20 @@ body {
   --color-soft-cocoa: #A38A74;
   --color-burnt-sienna: #D18A63;
   --color-black-lines: #1A1A1A;
-  
-  /* Spacing presets (140-200px vertical spacing) */
+
+  /* Spacing presets */
   --spacing-xs: 40px;
   --spacing-sm: 80px;
   --spacing-md: 140px;
   --spacing-lg: 180px;
   --spacing-xl: 200px;
-  
+
+  --space-xs: 40px;
+  --space-sm: 80px;
+  --space-md: 120px;
+  --space-lg: 180px;
+  --space-xl: 240px;
+
   /* Grid */
   --grid-columns: 12;
   --grid-gap: 24px;
@@ -41,7 +51,7 @@ body {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.7;
   font-weight: 400;
   color: var(--color-black-lines);
@@ -59,32 +69,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: clamp(48px, 6vw, 96px);
-  font-weight: 300;
-  margin-bottom: 32px;
-}
-
-h2 {
-  font-size: clamp(36px, 5vw, 72px);
+  font-size: clamp(42px, 5vw, 92px);
   font-weight: 300;
   margin-bottom: 24px;
 }
 
-h3 {
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 400;
+h2 {
+  font-size: clamp(32px, 3vw, 64px);
+  font-weight: 300;
   margin-bottom: 20px;
 }
 
-h4 {
-  font-size: clamp(22px, 3vw, 36px);
-  font-weight: 500;
+h3 {
+  font-size: clamp(22px, 2vw, 32px);
+  font-weight: 400;
   margin-bottom: 16px;
+}
+
+h4 {
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
 p {
   margin-bottom: 16px;
   max-width: 65ch;
+  font-size: clamp(16px, 1.2vw, 20px);
 }
 
 /* ===== LAYOUT SYSTEM ===== */
@@ -94,13 +105,38 @@ p {
   padding: 0 40px;
 }
 
+.layout-container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 640px) {
+  .layout-container {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .layout-container {
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .layout-container {
+    padding: 0 40px;
+  }
+}
+
 .grid-12 {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: var(--grid-gap);
+  column-gap: 24px;
+  row-gap: 24px;
 }
 
-/* Column spans */
 .col-1 { grid-column: span 1; }
 .col-2 { grid-column: span 2; }
 .col-3 { grid-column: span 3; }
@@ -114,37 +150,39 @@ p {
 .col-11 { grid-column: span 11; }
 .col-12 { grid-column: span 12; }
 
-/* Responsive grid */
-@media (max-width: 768px) {
+.col-span-12 { grid-column: span 12; }
+.col-span-6 { grid-column: span 6; }
+.col-span-4 { grid-column: span 4; }
+.col-span-3 { grid-column: span 3; }
+
+@media (max-width: 640px) {
   .grid-12 {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(12, 1fr);
   }
-  
-  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
-  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-    grid-column: span 1;
-  }
+
+  .col-span-mobile-12 { grid-column: span 12; }
+  .col-span-mobile-6 { grid-column: span 6; }
 }
 
 /* ===== SPACING UTILITIES ===== */
-.section {
-  padding: var(--spacing-lg) 0;
-}
-
-.section-sm {
-  padding: var(--spacing-sm) 0;
-}
-
-.section-md {
-  padding: var(--spacing-md) 0;
-}
-
-.section-lg {
-  padding: var(--spacing-lg) 0;
-}
-
+.section,
+.section-sm,
+.section-md,
+.section-lg,
 .section-xl {
-  padding: var(--spacing-xl) 0;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .section,
+  .section-sm,
+  .section-md,
+  .section-lg,
+  .section-xl {
+    padding-top: var(--space-sm);
+    padding-bottom: var(--space-sm);
+  }
 }
 
 .spacer-xs { margin-top: var(--spacing-xs); }
@@ -180,6 +218,72 @@ p {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* ===== GLOBAL LINE-ART UTILITIES ===== */
+.line-art-stroke {
+  stroke: var(--color-black-lines);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.line-art-container {
+  border: 2px solid var(--color-black-lines);
+  border-radius: 6px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  background-color: transparent;
+}
+
+svg {
+  overflow: visible;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 20px;
+}
+
+.artist-card {
+  transition: transform 0.25s ease;
+}
+
+.artist-card:hover {
+  transform: translateY(-4px);
+}
+
+@keyframes loom-wiggle {
+  0%   { transform: translateX(0px) translateY(0px) rotate(0deg); }
+  30%  { transform: translateX(1px) translateY(-1px) rotate(0.4deg); }
+  70%  { transform: translateX(-1px) translateY(1px) rotate(-0.4deg); }
+  100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+}
+
+.lineart-hover:hover {
+  animation: loom-wiggle 0.45s ease-in-out forwards;
+}
+
+.ending-spiral-container {
+  position: fixed;
+  top: 50%;
+  right: 32px;
+  width: 220px;
+  transform: translateY(-50%);
+  transition: transform 0.18s linear;
+  will-change: transform;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ending-spiral-path {
+  opacity: 0;
+  transition: stroke-dashoffset 0.2s linear, opacity 0.3s ease-out;
 }
 
 /* ===== WEAVE LINE UTILITIES ===== */

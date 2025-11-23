@@ -1,83 +1,116 @@
 import React from 'react';
+import SectionTitle from '../../components/ui/SectionTitle';
+import LineArtBlock from '../../components/LineArtBlock';
+import LayoutContainer from '../../components/ui/LayoutContainer';
+import ScrollReveal from '../../components/ScrollReveal';
 
 export default function About() {
   return (
     <div className="page-about">
-      {/* Hero Section */}
       <section className="section-xl">
-        <div className="container">
-          <div className="grid-12">
-            <div className="col-10">
-              <h1>About Loom House</h1>
-              <p style={{ fontSize: '18px', color: 'var(--color-soft-cocoa)' }}>
-                A space for artists to gather, create, and grow together
+        <LayoutContainer>
+          <ScrollReveal>
+            <SectionTitle
+              title="About Loom House"
+              subtitle="A space of quiet collaboration and woven stories"
+              align="left"
+            />
+          </ScrollReveal>
+          <div className="grid-12" style={{ gap: 'var(--grid-gap)' }}>
+            <ScrollReveal className="col-span-6 col-span-mobile-12">
+              <p style={{ color: 'var(--color-soft-cocoa)' }}>
+                Placeholder text for the Loom House narrative overview.
+                This copy block will describe the collective in later stages.
               </p>
-            </div>
+            </ScrollReveal>
+            <ScrollReveal className="col-span-6 col-span-mobile-12" delay={150}>
+              <LineArtBlock />
+            </ScrollReveal>
           </div>
-        </div>
+        </LayoutContainer>
       </section>
-      
-      {/* Story Section */}
+
       <section className="section-lg">
-        <div className="container">
-          <div className="grid-12">
-            <div className="col-6">
-              <h2>Our Story</h2>
+        <LayoutContainer>
+          <ScrollReveal>
+            <SectionTitle
+              title="Our Mission"
+              subtitle="Holding space for contemporary experimentation"
+            />
+          </ScrollReveal>
+          <div className="grid-12" style={{ gap: 'var(--grid-gap)' }}>
+            <ScrollReveal className="col-span-5 col-span-mobile-12">
               <p>
-                Placeholder for the Loom House origin story. 
-                This section will contain the narrative of how the collective was formed, 
-                its values, and its vision for the future.
+                Placeholder paragraph for Loom House mission statement.
+                Future content will expand on community goals and focus.
               </p>
-            </div>
-            <div className="col-6">
-              <div className="lineArtPlaceholder">
-                Story Illustration
-              </div>
-            </div>
+            </ScrollReveal>
+            <ScrollReveal className="col-span-2 col-span-mobile-12" delay={150}>
+              <svg
+                viewBox="0 0 120 300"
+                width="100%"
+                height="auto"
+                preserveAspectRatio="xMidYMid meet"
+                className="lineart-hover"
+              >
+                <path
+                  className="line-art-stroke"
+                  d="M60 10 C30 90, 90 150, 40 220 C10 260, 80 280, 60 290"
+                />
+              </svg>
+            </ScrollReveal>
+            <ScrollReveal className="col-span-5 col-span-mobile-12" delay={300}>
+              <p>
+                Secondary placeholder paragraph to balance the composition.
+                Will contain practical mission details in the next stage.
+              </p>
+            </ScrollReveal>
           </div>
-        </div>
+        </LayoutContainer>
       </section>
-      
-      {/* Values Section */}
+
       <section className="section-lg">
-        <div className="container">
-          <div className="text-center" style={{ marginBottom: 'var(--spacing-md)' }}>
-            <h2>Our Values</h2>
+        <LayoutContainer>
+          <ScrollReveal>
+            <SectionTitle title="Philosophy" />
+          </ScrollReveal>
+          <div className="grid-12" style={{ gap: 'var(--grid-gap)' }}>
+            <ScrollReveal className="col-span-6 col-span-mobile-12">
+              <p>
+                Two-column placeholder copy referencing the Loom House philosophy.
+                Future writing will explore the weaving of art, community, and
+                web3 experimentation.
+              </p>
+              <p>
+                Additional paragraph describing how the collective cultivates
+                slow, intentional collaboration.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal className="col-span-6 col-span-mobile-12" delay={200}>
+              <LineArtBlock height={320}>
+                <svg
+                  viewBox="0 0 220 220"
+                  width="100%"
+                  height="auto"
+                  preserveAspectRatio="xMidYMid meet"
+                  className="lineart-hover"
+                >
+                  <path
+                    className="line-art-stroke"
+                    d="M20 200 C40 80, 180 80, 200 200"
+                  />
+                  <path
+                    className="line-art-stroke"
+                    d="M60 160 C80 120, 140 140, 160 100"
+                  />
+                </svg>
+              </LineArtBlock>
+            </ScrollReveal>
           </div>
-          
-          <div className="grid-12" style={{ gap: '48px' }}>
-            <div className="col-4">
-              <h4>Authenticity</h4>
-              <p>Placeholder for value description</p>
-            </div>
-            
-            <div className="col-4">
-              <h4>Community</h4>
-              <p>Placeholder for value description</p>
-            </div>
-            
-            <div className="col-4">
-              <h4>Innovation</h4>
-              <p>Placeholder for value description</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Team Section Placeholder */}
-      <section className="section-lg">
-        <div className="container">
-          <div className="text-center">
-            <h2>The Team</h2>
-            <p style={{ color: 'var(--color-soft-cocoa)', marginBottom: 'var(--spacing-sm)' }}>
-              Team member profiles will be added in later stages
-            </p>
-          </div>
-        </div>
+        </LayoutContainer>
       </section>
     </div>
   );
 }
 
-// STAGE 1 COMPLETE — READY FOR STAGE 2
-
+// STAGE 8A + 8B COMPLETE — READY FOR STAGE 9

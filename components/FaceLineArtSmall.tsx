@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-export default function ScrollDrawFigure() {
+export default function FaceLineArtSmall() {
   const pathRef = useRef<SVGPathElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [pathLength, setPathLength] = useState(0);
@@ -15,6 +15,7 @@ export default function ScrollDrawFigure() {
       // Initial setup: fully hidden
       pathRef.current.style.strokeDasharray = `${length}`;
       pathRef.current.style.strokeDashoffset = `${length}`;
+      pathRef.current.style.opacity = '0.2';
     }
 
     let ticking = false;
@@ -26,36 +27,28 @@ export default function ScrollDrawFigure() {
 
           const rect = sectionRef.current.getBoundingClientRect();
           const viewportHeight = window.innerHeight;
-          const elementHeight = sectionRef.current.offsetHeight;
-
-          // Improved visibility calculation
-          // Draws as the element moves from bottom to center of screen
           
-          // Progress = 0 when element top is at bottom of screen
-          // Progress = 1 when element center is at center of screen
-          const viewHeight = window.innerHeight;
-          const elementTop = rect.top;
-          const elementCenter = elementTop + rect.height / 2;
-          const screenCenter = viewHeight / 2;
-
-          // Map range: 
-          // Start: when top enters screen (viewHeight)
-          // End: when center reaches center (viewHeight/2)
-          const startDraw = viewHeight;
-          const endDraw = viewHeight * 0.4; // finish slightly above center
+          // SCROLL DRAWING LOGIC
+          // Start drawing when the element enters the bottom of the viewport
+          // Finish drawing when the element reaches the center of the viewport
           
-          const totalRange = startDraw - endDraw;
-          const currentPos = startDraw - elementTop;
+          const startPoint = viewportHeight;      // Enters bottom
+          const endPoint = viewportHeight * 0.4;  // Near center/top
           
-          let progress = currentPos / totalRange;
+          const distance = startPoint - rect.top;
+          const totalDistance = startPoint - endPoint;
           
+          const progress = distance / totalDistance;
           const clampedProgress = Math.min(Math.max(progress, 0), 1);
 
           // Update stroke offset
+          // 0 progress -> offset = length (hidden)
+          // 1 progress -> offset = 0 (visible)
           const offset = pathLength * (1 - clampedProgress);
+          
           pathRef.current.style.strokeDashoffset = `${offset}`;
           
-          // Opacity fade in - starts immediately
+          // Opacity fade: 0.2 -> 1.0
           pathRef.current.style.opacity = `${0.2 + (clampedProgress * 0.8)}`;
 
           ticking = false;
@@ -71,17 +64,17 @@ export default function ScrollDrawFigure() {
   }, [pathLength]);
 
   return (
-    <div ref={sectionRef} className="scroll-draw-figure">
+    <div ref={sectionRef} className="face-line-art-small">
       <svg
         viewBox="0 0 480 560"
         xmlns="http://www.w3.org/2000/svg"
-        className="draw-svg"
+        className="small-face-svg"
       >
         {/* 
-          STAGE 6: SECOND FIGURE
+          STAGE 6: SMALL SCROLL-DRAWING FACE
           - Identical continuous line face style
-          - Draws purely based on scroll position
-          - "Weaves" into existence as you scroll down
+          - Draws progressively on scroll
+          - "Woven echo" effect
         */}
         <path
           ref={pathRef}
@@ -110,40 +103,39 @@ export default function ScrollDrawFigure() {
             C 320 220, 350 240, 380 280
             C 400 320, 410 360, 380 400
           "
-          className="draw-path"
+          className="small-face-path"
         />
       </svg>
 
       <style jsx>{`
-        .scroll-draw-figure {
+        .face-line-art-small {
           margin: 0 auto;
           display: block;
           width: 100%;
-          max-width: 400px;
-          height: auto;
+          max-width: 220px; /* Small version size */
           position: relative;
         }
 
-        .draw-svg {
+        .small-face-svg {
           width: 100%;
           height: auto;
           display: block;
           overflow: visible;
         }
 
-        .draw-path {
+        .small-face-path {
           stroke: var(--color-black-lines);
-          stroke-width: 1.8;
+          stroke-width: 2;
           fill: none;
           stroke-linecap: round;
           stroke-linejoin: round;
-          will-change: stroke-dashoffset;
-          transition: stroke-dashoffset 0.05s linear; /* Ultra smooth instant reaction */
+          will-change: stroke-dashoffset, opacity;
+          transition: stroke-dashoffset 0.1s linear;
         }
 
         @media (max-width: 768px) {
-          .scroll-draw-figure {
-            max-width: 300px;
+          .face-line-art-small {
+            max-width: 180px;
           }
         }
       `}</style>
@@ -151,5 +143,5 @@ export default function ScrollDrawFigure() {
   );
 }
 
-// STAGE 6 COMPLETE — SCROLL LINKED DRAWING
+// STAGE 6 COMPLETE — SCROLL DRAWING SMALL FACE
 
